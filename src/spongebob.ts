@@ -1,5 +1,6 @@
 class Spongebob extends HTMLElement {
-  image!: HTMLImageElement;
+  image: HTMLImageElement;
+  elementAttached: boolean = false;
   connectedCallback() {
     const style = document.createElement("style");
     style.innerHTML = `
@@ -42,13 +43,16 @@ class Spongebob extends HTMLElement {
       image.classList.toggle("small");
     }
     this.appendChild(image);
+    this.elementAttached = true;
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-    if (name === "triggered") {
-      console.log("Triggered has changed");
-      this.image.classList.toggle("triggered");
-      this.image.classList.toggle("small");
+    if (this.elementAttached) {
+      if (name === "triggered") {
+        console.log("Triggered has changed");
+        this.image.classList.toggle("triggered");
+        this.image.classList.toggle("small");
+      }
     }
   }
 

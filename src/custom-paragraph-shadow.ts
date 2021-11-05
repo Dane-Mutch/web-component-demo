@@ -5,7 +5,7 @@ class CustomParagraphShadow extends HTMLElement {
     styleElem.innerHTML = `
         * {
           font-size: 2rem;
-          color: red;
+          color: var(--text-color, red);
         }
     
     `;

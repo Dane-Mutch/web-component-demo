@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <style>
+      h2 {
+        font-size: 3rem;
+      }
       body {
         margin: 0;
         min-height: 100vh;
+        /* --text-color: blue; */
       }
       * {
         color: black !important;
@@ -26,21 +30,22 @@
         background-color: #fdfdfd;
       }
       .element {
-        padding: 20px;
+        padding: 35px;
         margin: auto;
+        font-weight: 700;
+      }
+      .tooltip {
+        position: absolute;
+        box-shadow: 0px 2px 2px rgba(0.2, 0, 0, 0);
       }
     </style>
   </head>
   <body>
     <div id="app" class="container">
       <div class="content">
+        <h2>Custom elements</h2>
         <div class="element">
           <custom-paragraph>This is a custom paragraph</custom-paragraph>
-        </div>
-        <div class="element">
-          <custom-paragraph-shadow
-            >This is in the shadow DOM.</custom-paragraph-shadow
-          >
         </div>
         <div class="element">
           <sponge-bob></sponge-bob>
@@ -49,11 +54,37 @@
           <sponge-bob triggered></sponge-bob>
         </div>
         <div class="element">
-          <zig-zag>
-            <div>Hello</div>
-            <div>Zig</div>
-            <div>Zag</div>
-          </zig-zag>
+          <div class="text">
+            <label for="name">Your name:</label>
+            <input id="name" aria-describedby="tp1" />
+            <how-to-tooltip class="tooltip" id="tp1"
+              >Ideally your name is Batman</how-to-tooltip
+            >
+            <br />
+            <br />
+            <br />
+            <label for="cheese">Favourite type of cheese: </label>
+            <input id="cheese" aria-describedby="tp2" />
+            <how-to-tooltip class="tooltip" id="tp2"
+              >Help I am trapped inside a tooltip message</how-to-tooltip
+            >
+          </div>
+        </div>
+        <h2>Shadow DOM</h2>
+        <div class="element">
+          <custom-paragraph-shadow
+            >This is in the shadow DOM.</custom-paragraph-shadow
+          >
+        </div>
+        <div class="element">
+          <fancy-tabs background>
+            <button slot="title">Tab 1</button>
+            <button slot="title">Tab 2</button>
+            <button slot="title">Tab 3</button>
+            <section>content panel 1</section>
+            <section>content panel 2</section>
+            <section>content panel 3</section>
+          </fancy-tabs>
         </div>
       </div>
     </div>
